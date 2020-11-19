@@ -9,20 +9,8 @@ import java.util.Date;
 @Document
 public class SnowplowEventRecord {
 
-    @Id
-    private String networkUserId;
-
     private Date deviceCreatedTimestamp;
     private String pageUrl;
-
-    @JsonGetter("network_userid")
-    public String getNetworkUserId() {
-        return networkUserId;
-    }
-
-    public void setNetworkUserId(String networkUserId) {
-        this.networkUserId = networkUserId;
-    }
 
     @JsonGetter("dvce_created_tstamp")
     public Date getDeviceCreatedTimestamp() {

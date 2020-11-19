@@ -32,9 +32,13 @@ public class SnowplowEventsConsumer {
         LOG.info(snowplowEvent.value());
 
         ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        SnowplowEventRecord snowplowEventRecord = mapper.readValue(snowplowEvent.value(), SnowplowEventRecord.class);
+        SnowplowEventIdRecord snowplowEventIdRecord = mapper.readValue(snowplowEvent.value(), SnowplowEventIdRecord.class);
 
-        String id = snowplowEventRecord.getNetworkUserId();
+        String id = snowplowEventIdRecord.getNetworkUserId();
+
+        SnowplowEventRecord snowplowEventRecord = new SnowplowEventRecord();
+        snowplowEventRecord.setDeviceCreatedTimestamp(snowplowEventIdRecord.getDeviceCreatedTimestamp());
+        snowplowEventRecord.setPageUrl(snowplowEventIdRecord.getPageUrl());
 
         Update update = new Update();
         update.push("pageviews", snowplowEventRecord);
