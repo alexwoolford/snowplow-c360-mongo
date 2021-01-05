@@ -142,3 +142,7 @@ This Spring Boot microservice appends each pageview (url and timestamp) to a doc
 To reset the consumer:
 
     kafka-consumer-groups --bootstrap-server localhost:9092 --group snowplow-c360 -reset-offsets --topic snowplow-enriched-json-good --to-earliest --execute
+
+[//]: # (TODO: check out social media Netflix doc)
+
+Netflix has a very insightful documentary, [The Social Dilemma](https://www.imdb.com/title/tt11464826/), that explores how companies collect data about individuals and use it to optimize for some business outcome (which may not be good for its users). There are some questionable ethics around this use-case.

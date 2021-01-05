@@ -20,14 +20,12 @@ import org.springframework.stereotype.Component;
 public class SnowplowEventsConsumer {
 
     private final Logger LOG = LoggerFactory.getLogger(SnowplowEventsConsumer.class);
-
+    
     @Autowired
     private MongoTemplate mongoTemplate;
 
     @KafkaListener(topics="snowplow-enriched-json-good")
     public void consumeSnowplowEvents(ConsumerRecord<String, String> snowplowEvent) throws JsonProcessingException, InterruptedException {
-
-        //TODO: remove network ID from nested elements.
 
         LOG.info(snowplowEvent.value());
 
